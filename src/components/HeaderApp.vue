@@ -1,0 +1,57 @@
+<template>
+  <q-header elevated class="bg-primary text-dark" height-hint="90">
+    <q-toolbar class="q-py-md q-px-md q-px-sm-xl">
+      <q-toolbar-title class="row no-wrap items-center cursor-pointer" @click="$router.push('/')">
+        <q-icon name="favorite" color="negative" size="md" class="q-mr-sm" />
+        <span class="text-weight-bold text-h5 text-dark">Adotar&Amar</span>
+      </q-toolbar-title>
+
+
+      <div class="row items-center gt-sm">
+        <q-btn flat no-caps label="Animais" color="dark" class="text-h6 text-weight-bold q-mr-sm" />
+        
+        <q-btn round flat icon="account_circle" size="xl" color="dark">
+          <q-menu>
+            <q-list style="min-width: 120px">
+              <q-item clickable v-close-popup>
+                <q-item-section>Meu Perfil</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section class="text-negative">Sair</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </div>
+
+      <div class="lt-md">
+        <q-btn flat round dense icon="menu" color="dark" size="lg">
+          <q-menu anchor="bottom right" self="top right">
+            <q-list style="min-width: 200px">
+              <q-item clickable v-close-popup>
+                <q-item-section avatar><q-icon name="pets" color="primary" /></q-item-section>
+                <q-item-section class="text-weight-bold">Animais</q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item clickable v-close-popup>
+                <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
+                <q-item-section>Meu Perfil</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section avatar><q-icon name="logout" color="negative" /></q-item-section>
+                <q-item-section class="text-negative">Sair</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </div>
+
+    </q-toolbar>
+  </q-header>
+</template>
+
+<script>
+export default {
+  name: 'HeaderApp'
+}
+</script>
