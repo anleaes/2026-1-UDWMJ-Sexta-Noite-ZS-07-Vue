@@ -6,17 +6,26 @@
         <span class="text-weight-bold text-h5 text-dark">Adotar&Amar</span>
       </q-toolbar-title>
 
-
       <div class="row items-center gt-sm">
         <q-btn flat no-caps label="Animais" color="dark" class="text-h6 text-weight-bold q-mr-sm" />
         
-        <q-btn round flat icon="account_circle" size="xl" color="dark">
-          <q-menu>
+        <q-btn 
+          round 
+          flat 
+          icon="account_circle" 
+          size="xl" 
+          color="dark"
+          @click="verificarLogin"
+        >
+          <q-menu v-if="isLoggedIn">
             <q-list style="min-width: 120px">
-              <q-item clickable v-close-popup>
-                <q-item-section>Meu Perfil</q-item-section>
+              <q-item>
+                <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
               </q-item>
-              <q-item clickable v-close-popup>
+              
+              <q-separator />
+              
+              <q-item clickable v-close-popup @click="fazerLogout">
                 <q-item-section class="text-negative">Sair</q-item-section>
               </q-item>
             </q-list>
@@ -28,19 +37,28 @@
         <q-btn flat round dense icon="menu" color="dark" size="lg">
           <q-menu anchor="bottom right" self="top right">
             <q-list style="min-width: 200px">
-              <q-item clickable v-close-popup>
+              <q-item clickable v-close-popup @click="$router.push('/animais')">
                 <q-item-section avatar><q-icon name="pets" color="primary" /></q-item-section>
                 <q-item-section class="text-weight-bold">Animais</q-item-section>
               </q-item>
+              
               <q-separator />
-              <q-item clickable v-close-popup>
+
+              <q-item v-if="!isLoggedIn" clickable v-close-popup @click="verificarLogin">
                 <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
-                <q-item-section>Meu Perfil</q-item-section>
+                <q-item-section>Entrar / Login</q-item-section>
               </q-item>
-              <q-item clickable v-close-popup>
-                <q-item-section avatar><q-icon name="logout" color="negative" /></q-item-section>
-                <q-item-section class="text-negative">Sair</q-item-section>
-              </q-item>
+
+              <template v-else>
+                <q-item>
+                  <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
+                  <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup @click="fazerLogout">
+                  <q-item-section avatar><q-icon name="logout" color="negative" /></q-item-section>
+                  <q-item-section class="text-negative">Sair</q-item-section>
+                </q-item>
+              </template>
             </q-list>
           </q-menu>
         </q-btn>
@@ -50,8 +68,22 @@
   </q-header>
 </template>
 
-<script>
-export default {
-  name: 'HeaderApp'
-}
+<script setup>
+  import { onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { isLoggedIn, userName, atualizarEstadoLogin, fazerLogout } from '../services/LoginService'
+
+  defineOptions({ name: 'HeaderApp' })
+  const router = useRouter()
+
+  onMounted(() => {
+    atualizarEstadoLogin()
+  })
+
+  const verificarLogin = () => {
+    atualizarEstadoLogin() 
+    if (!isLoggedIn.value) {
+      router.push('/login')
+    }
+  }
 </script>
