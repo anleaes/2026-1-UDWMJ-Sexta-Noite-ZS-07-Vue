@@ -1,6 +1,6 @@
 <template>
     <q-page class="bg-cream q-pa-md q-pa-md-xl">
-        <div class="container-admin">
+        <div class="container-admin q-mx-auto">
         
             <q-card class="shadow-2 q-mb-lg">
                 <q-tabs
@@ -207,7 +207,7 @@
                         </q-card-section>
                     </q-card>
                 </q-expansion-item>
-                <q-item clickable v-ripple class="bg-white shadow-2" @click="$router.push('/animais')">
+                <q-item clickable v-ripple class="bg-white shadow-2" @click="$router.push('/admin/animais')">
                     <q-item-section avatar><q-icon name="pets" color="primary" /></q-item-section>
                     <q-item-section class="text-weight-bold">Ver animais</q-item-section>
                     <q-item-section side><q-icon name="chevron_right" /></q-item-section>
@@ -465,7 +465,7 @@
 
 <style scoped>
     .bg-cream { background-color: #f7f5ef; }
-    .container-admin { max-width: 1200px; margin: 0 auto;}
+    .container-admin { max-width: 1600px; margin: 0 auto;}
     .card-admin { transition: all 0.3s; border-radius: 12px; }
     .card-admin:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 </style>

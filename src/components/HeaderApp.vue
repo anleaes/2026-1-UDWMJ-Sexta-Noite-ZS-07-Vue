@@ -1,6 +1,6 @@
 <template>
   <q-header elevated class="bg-primary text-white" height-hint="90">
-    <q-toolbar class="q-py-md q-px-md q-px-sm-xl">
+    <q-toolbar class="q-py-md q-px-md q-px-sm-xl q-mx-auto" style="max-width: 1600px;">
       <q-toolbar-title class="row no-wrap items-center cursor-pointer" @click="$router.push('/')">
         <q-icon name="favorite" color="negative" size="md" class="q-mr-sm" />
         <span class="text-weight-bold text-h5 text-white">Adotar&Amar</span>
