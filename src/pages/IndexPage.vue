@@ -41,7 +41,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import AnimalCard from 'components/AnimalCard.vue'
-import { buscarAnimaisBackEnd } from '../router/AnimalsService'
+import { buscarAnimaisBackEnd } from '../services/AnimalsService'
 
 const listaAnimais = ref([])
 
