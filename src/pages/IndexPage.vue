@@ -46,7 +46,8 @@ import { buscarAnimaisBackEnd } from '../services/AnimalsService'
 const listaAnimais = ref([])
 
 onMounted(async () => {
-  listaAnimais.value = await buscarAnimaisBackEnd()
+  const animais = await buscarAnimaisBackEnd()
+  listaAnimais.value = (animais.filter(animal => animal.adotado === false)).slice(0, 5)
 })
 </script>
 

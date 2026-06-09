@@ -8,14 +8,15 @@
 
     <q-card-section class="q-pa-md">
       <div class="row no-wrap items-center">
-        <div class="col text-h6 ellipsis text-primary">{{ animal.raca }}</div>
+        <div class="col text-h6 ellipsis text-primary">{{ animal.raca }} - {{animal.especie}}</div>
       </div>
       <div class="text-subtitle2 text-grey-8">{{ animal.sexo }} • {{ animal.idade }}</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none q-pb-lg text-caption text-grey-7">
       <div class="row q-gutter-xs">
-        <q-badge v-for="tag in animal.tags" :key="tag" outline color="secondary" :label="tag" />
+        <q-badge v-for="tag in animal.characteristics.slice(0,2)" :key="tag" outline color="secondary" :label="tag" />
+        <div>•••</div>
       </div>
     </q-card-section>
 

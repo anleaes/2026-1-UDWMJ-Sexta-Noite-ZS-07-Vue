@@ -8,7 +8,7 @@
 
       <div class="row items-center gt-sm">
 
-        <q-btn flat no-caps label="Animais" color="white" class="text-h6 text-weight-bold q-mr-sm" />
+        <q-btn @click="$router.push('/animais')" flat no-caps label="Animais" color="white" class="text-h6 text-weight-bold q-mr-sm" />
         
         <q-btn round flat icon="account_circle" size="lg" color="white" @click="verificarLogin">
           <q-menu v-if="isLoggedIn" style="width: 150px;">
