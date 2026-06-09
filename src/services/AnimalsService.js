@@ -14,7 +14,7 @@ const calcularIdade = (dataNascimento) => {
   return `${idade} ano${idade > 1 ? 's' : ''}`
 }
 
-export async function buscarAnimaisBackEnd() {
+export async function buscarAnimais() {
   try {
     const response = await fetch('http://127.0.0.1:8000/animais/')
     
@@ -44,4 +44,29 @@ export async function buscarAnimaisBackEnd() {
     console.error('Erro na requisição fetch:', error)
     return []
   }
+}
+
+export async function atualizarStatusAnimal(id, statusData) {
+  const response = await fetch(`http://127.0.0.1:8000/animais/${id}/`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${localStorage.getItem('authToken')}`
+    },
+    body: JSON.stringify(statusData)
+  })
+  if (!response.ok) throw new Error('Erro ao atualizar animal')
+  return await response.json()
+}
+
+export async function cadastrarAnimal(formData) {
+  const response = await fetch('http://127.0.0.1:8000/animais/', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Token ${localStorage.getItem('authToken')}`
+    },
+    body: formData
+  })
+  if (!response.ok) throw new Error('Erro ao cadastrar animal')
+  return await response.json()
 }

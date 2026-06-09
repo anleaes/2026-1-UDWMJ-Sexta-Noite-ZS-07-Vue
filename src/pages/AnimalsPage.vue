@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-cream q-pa-md q-pa-md-xl">
-    <div class="container-animais mx-auto">
+    <div class="container-animais q-mx-auto">
       
       <div class="row q-mb-lg">
         <q-input 
@@ -127,7 +127,7 @@
 <script setup>
     import { ref, computed, onMounted, watch } from 'vue'
     import AnimalCard from 'components/AnimalCard.vue'
-    import { buscarAnimaisBackEnd } from '../services/AnimalsService'
+    import { buscarAnimais } from '../services/AnimalsService'
 
     const isLoading = ref(true)
 
@@ -167,7 +167,7 @@
 
     onMounted(async () => {
         try {
-            const dados = await buscarAnimaisBackEnd()
+            const dados = await buscarAnimais()
             animais.value = dados.filter(pet => pet.adotado === false)
         } catch (error) {
             console.error("Erro ao buscar animais", error)
@@ -230,7 +230,7 @@
         background-color: #f7f5ef; 
     }
     .container-animais { 
-        max-width: 1200px; 
+        max-width: 1600px; 
     }
     :deep(.search-input .q-field__control) {
         border-radius: 30px !important;
