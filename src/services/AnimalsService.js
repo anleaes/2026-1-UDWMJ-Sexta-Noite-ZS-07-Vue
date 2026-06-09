@@ -27,11 +27,17 @@ export async function buscarAnimaisBackEnd() {
     return data.map(animal => ({
       id: animal.id,
       nome: animal.name,
-      raca: animal.breed,
+      raca: animal.breed_name,
+      especie: animal.species,
       sexo: animal.sex === 'M' ? 'Macho' : 'Fêmea',
+      castrado: animal.sterilized,
+      porte: animal.size === 'P' ? 'Pequeno' : (animal.size === 'M' ? 'Médio' : 'Grande'),
+      data_nascimento: animal.birth_date,
+      data_listagem: animal.listedAt,
       idade: calcularIdade(animal.birth_date),
-      tags: animal.characteristic.slice(0, 2),
-      imagem: animal.photo || `https://placehold.co/400x400?text=${animal.name}`
+      characteristics: animal.characteristic,
+      imagem: animal.photo || `https://placehold.co/400x400?text=${animal.name}`,
+      adotado: animal.adopted
     }))
     
   } catch (error) {
