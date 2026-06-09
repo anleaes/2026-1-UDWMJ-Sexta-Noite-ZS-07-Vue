@@ -2,26 +2,32 @@ import { ref } from 'vue'
 
 export const isLoggedIn = ref(false)
 export const userName = ref('')
+export const userRole = ref('')
 
 export const atualizarEstadoLogin = () => {
   const token = localStorage.getItem('authToken')
   const user = localStorage.getItem('authUsername')
+  const role = localStorage.getItem('authRole')
 
   if (token) {
     isLoggedIn.value = true
     userName.value = user
+    userRole.value = role || 'user'
   } else {
     isLoggedIn.value = false
     userName.value = ''
+    userRole.value = ''
   }
 }
 
 export const fazerLogout = () => {
   localStorage.removeItem('authToken')
   localStorage.removeItem('authUsername')
+  localStorage.removeItem('authRole')
   
   isLoggedIn.value = false
   userName.value = ''
+  userRole.value = ''
 }
 
 export const fazerLogin = async (username, password) => {
@@ -45,6 +51,7 @@ export const fazerLogin = async (username, password) => {
 
   localStorage.setItem('authToken', data.token)
   localStorage.setItem('authUsername', data.username)
+  localStorage.setItem('authRole', data.role)
 
   atualizarEstadoLogin()
 
@@ -84,6 +91,7 @@ export const fazerRegistro = async (firstName, lastName, username, email, passwo
 
   localStorage.setItem('authToken', data.token)
   localStorage.setItem('authUsername', data.username)
+  localStorage.setItem('authRole', 'user')
 
   atualizarEstadoLogin()
 
