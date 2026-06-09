@@ -46,19 +46,7 @@
 
               <q-item v-if="!isLoggedIn" clickable v-close-popup @click="verificarLogin">
                 <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
-                <q-item-section>Entrar / Login</q-item-section>
               </q-item>
-
-              <template v-else>
-                <q-item>
-                  <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
-                  <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
-                </q-item>
-                <q-item clickable v-close-popup @click="fazerLogout">
-                  <q-item-section avatar><q-icon name="logout" color="negative" /></q-item-section>
-                  <q-item-section class="text-negative">Sair</q-item-section>
-                </q-item>
-              </template>
             </q-list>
           </q-menu>
         </q-btn>
