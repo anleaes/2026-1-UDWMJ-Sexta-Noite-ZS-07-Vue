@@ -226,6 +226,38 @@
                     <q-item-section class="text-weight-bold">Adicionar Raça</q-item-section>
                     <q-item-section side><q-icon name="chevron_right" /></q-item-section>
                 </q-item>
+                <q-item clickable v-ripple class="bg-white shadow-2" @click="$router.push('/admin/racas')">
+    <q-item-section avatar><q-icon name="pets" color="primary" /></q-item-section>
+    <q-item-section class="text-weight-bold">Adicionar Raça</q-item-section>
+    <q-item-section side><q-icon name="chevron_right" /></q-item-section>
+</q-item>
+
+<!-- Meta de Adoções separado, fora do q-item acima -->
+<q-expansion-item
+    class="bg-white shadow-2"
+    icon="emoji_events"
+    label="Meta de Adoções"
+    header-class="text-weight-bold"
+>
+    <q-card>
+        <q-card-section>
+            <div class="row items-center q-gutter-md">
+                <q-input
+                    v-model.number="metaAdocoes"
+                    label="Meta mensal de adoções"
+                    type="number"
+                    outlined
+                    dense
+                    style="width: 200px;"
+                />
+                <q-btn color="primary" label="Salvar" no-caps @click="salvarMeta" />
+            </div>
+            <div class="text-caption text-grey-7 q-mt-sm">
+                Meta atual: {{ metaAdocoes }} adoções por mês
+            </div>
+        </q-card-section>
+    </q-card>
+</q-expansion-item>
             </div>
 
         </div>
@@ -257,6 +289,12 @@
 
     const $q = useQuasar()
     const tab = ref('clientes')
+    const metaAdocoes = ref(parseInt(localStorage.getItem('meta_adocoes')) || 15)
+
+    const salvarMeta = () => {
+        localStorage.setItem('meta_adocoes', metaAdocoes.value)
+        $q.notify({ type: 'positive', message: 'Meta atualizada com sucesso!', position: 'top' })
+}
 
     const clientesList = ref([]) 
     const funcionariosList = ref([])
