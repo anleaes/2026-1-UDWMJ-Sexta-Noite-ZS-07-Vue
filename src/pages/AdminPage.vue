@@ -14,6 +14,7 @@
                 >
                     <q-tab name="clientes" label="CLIENTES" />
                     <q-tab name="funcionarios" label="FUNCIONÁRIOS" />
+                    <q-tab name="solicitacoes" label="SOLICITAÇÕES" />
                 </q-tabs>
 
                 <q-separator />
@@ -101,6 +102,9 @@
                                 </q-card>
                             </div>
                         </div>
+                    </q-tab-panel>
+                    <q-tab-panel name="solicitacoes" class="q-pa-none">
+                        <AprovarSolicitacoes />
                     </q-tab-panel>
 
                 </q-tab-panels>
@@ -221,6 +225,7 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import { useQuasar } from 'quasar'
+    import AprovarSolicitacoes from './AprovarSolicitacoesPage.vue'
     
     import { 
         buscarClientes, 
