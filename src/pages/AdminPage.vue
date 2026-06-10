@@ -216,6 +216,9 @@
                     <q-item-section class="text-weight-bold">Ver animais</q-item-section>
                     <q-item-section side><q-icon name="chevron_right" /></q-item-section>
                 </q-item>
+                <q-item clickable v-ripple class="bg-white shadow-2" @click="$router.push('/admin/vacinas')">
+                    <q-item-section avatar><q-icon name="vaccines" color="primary" /></q-item-section>
+                    <q-item-section class="text-weight-bold">Gerenciar Vacinas</q-item-section>
                 <q-item clickable v-ripple class="bg-white shadow-2" @click="$router.push('/admin/racas')">
                     <q-item-section avatar><q-icon name="pets" color="primary" /></q-item-section>
                     <q-item-section class="text-weight-bold">Adicionar Raça</q-item-section>
