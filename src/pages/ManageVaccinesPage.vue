@@ -98,6 +98,7 @@
 </template>
 
 <script setup>
+//teste
     import { ref, onMounted } from 'vue'
     import { useQuasar } from 'quasar'
     import { buscarVacinas, atualizarVacina, deletarVacina, cadastrarVacina } from '../services/VaccinesService'
