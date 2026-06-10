@@ -14,8 +14,8 @@ const routes = [
       { path: 'admin/vacinacoes', component: () => import('pages/ManageVaccinationsPage.vue') },
       { path: 'perfil', component: () => import('pages/ProfilePage.vue') },
       { path: 'adocao/:id', component: () => import('pages/AdoptionFormPage.vue') },
-      { path: 'minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue') },
-      { path: 'admin/solicitacoes', component: () => import('pages/AprovarSolicitacoesPage.vue') },
+      { path: 'minhas-solicitacoes', component: () => import('src/pages/MyRequests.vue') },
+      { path: 'admin/solicitacoes', component: () => import('pages/ApproveRequest.vue') },
       { path: 'admin/racas', component: () => import('pages/AdminBreedsPage.vue') }
     ],
   },

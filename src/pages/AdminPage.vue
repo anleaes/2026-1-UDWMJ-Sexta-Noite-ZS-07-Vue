@@ -104,7 +104,7 @@
                         </div>
                     </q-tab-panel>
                     <q-tab-panel name="solicitacoes" class="q-pa-none">
-                        <AprovarSolicitacoes />
+                        <ApproveRequest />
                     </q-tab-panel>
 
                 </q-tab-panels>
@@ -267,7 +267,7 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import { useQuasar } from 'quasar'
-    import AprovarSolicitacoes from './AprovarSolicitacoesPage.vue'
+    import ApproveRequest from './ApproveRequest.vue'
     
     import { 
         buscarClientes, 

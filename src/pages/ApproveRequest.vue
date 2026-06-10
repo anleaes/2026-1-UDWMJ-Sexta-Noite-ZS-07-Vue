@@ -7,7 +7,6 @@
         Analise e responda às solicitações enviadas pelos adotantes.
       </div>
 
-      <!-- Filtro por status -->
       <div class="row q-gutter-sm q-mb-lg">
         <q-btn
           v-for="f in filtros"
