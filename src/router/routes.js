@@ -9,7 +9,8 @@ const routes = [
       { path: 'admin', component: () => import('pages/AdminPage.vue') },
       { path: 'animais', component: () => import('pages/AnimalsPage.vue') },
       { path: 'admin/animais', component: () => import('pages/AdminAnimalsPage.vue') },
-      { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') }
+      { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') },
+      { path: 'admin/vacinas', component: () => import('pages/ManageVaccinesPage.vue') },
     ],
   },
   {
