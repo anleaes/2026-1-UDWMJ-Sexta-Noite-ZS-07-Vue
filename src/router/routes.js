@@ -15,6 +15,7 @@ const routes = [
       { path: '/minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue'), meta: { requiresAuth: true } },
       { path: '/admin/solicitacoes', component: () => import('pages/AprovarSolicitacoesPage.vue'), meta: { requiresAdmin: true } },
       { path: '/minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue') },
+      { path: 'admin/racas', component: () => import('pages/AdminBreedsPage.vue') }
     ],
   },
   {
