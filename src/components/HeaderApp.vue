@@ -17,10 +17,16 @@
                 <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
               </q-item>
               <q-separator />
+              <q-item clickable v-close-popup @click="$router.push('/perfil')">
+                <q-item-section>Minha Conta</q-item-section>
+              </q-item>
+              <q-item v-if="userRole === 'user'" clickable v-close-popup @click="$router.push('/minhas-solicitacoes')">  <!-- adiciona -->
+              <q-item-section>Minhas Solicitações</q-item-section>
+                </q-item> 
               <q-item v-if="userRole === 'admin' || userRole === 'moderador'" clickable v-close-popup @click="$router.push('/admin')">
                 <q-item-section>Gerenciar Site</q-item-section>
               </q-item>
-              <q-item clickable v-close-popup @click="fazerLogout">
+              <q-item clickable v-close-popup @click="sairDoSistema">
                 <q-item-section class="text-negative">Sair</q-item-section>
               </q-item>
             </q-list>
@@ -49,13 +55,17 @@
                   <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
                   <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
                 </q-item>
+                <q-item v-if="userRole === 'user'" clickable v-close-popup @click="$router.push('/minhas-solicitacoes')">  <!-- adiciona -->
+                <q-item-section avatar><q-icon name="assignment" color="primary" /></q-item-section>
+                    <q-item-section>Minhas Solicitações</q-item-section>
+                </q-item>
 
                 <q-item v-if="userRole === 'admin' || userRole === 'moderador'" clickable v-close-popup @click="$router.push('/admin')">
                   <q-item-section avatar><q-icon name="admin_panel_settings" color="primary" /></q-item-section>
                   <q-item-section>Gerenciar Site</q-item-section>
                 </q-item>
 
-                <q-item clickable v-close-popup @click="fazerLogout">
+                <q-item clickable v-close-popup @click="sairDoSistema">
                   <q-item-section avatar><q-icon name="logout" color="negative" /></q-item-section>
                   <q-item-section class="text-negative">Sair</q-item-section>
                 </q-item>
@@ -72,8 +82,6 @@
 <script setup>
   import { onMounted } from 'vue'
   import { useRouter } from 'vue-router'
-  
-  // IMPORTANTE: Importamos o userRole aqui!
   import { isLoggedIn, userName, userRole, atualizarEstadoLogin, fazerLogout } from '../services/LoginService'
 
   defineOptions({ name: 'HeaderApp' })
@@ -84,9 +92,14 @@
   })
 
   const verificarLogin = () => {
-    atualizarEstadoLogin() 
+    atualizarEstadoLogin()
     if (!isLoggedIn.value) {
       router.push('/login')
     }
+  }
+
+  const sairDoSistema = async () => {
+    await fazerLogout() 
+    router.push('/login') 
   }
 </script>
