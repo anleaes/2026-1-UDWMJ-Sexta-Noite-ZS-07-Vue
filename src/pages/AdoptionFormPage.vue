@@ -241,7 +241,7 @@ async function enviarAdocao () {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Token ${localStorage.getItem('authToken')}`
       },
       body: JSON.stringify(form.value)
     })

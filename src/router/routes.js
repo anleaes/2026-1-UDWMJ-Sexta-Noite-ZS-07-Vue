@@ -12,9 +12,8 @@ const routes = [
       { path: 'perfil', component: () => import('pages/ProfilePage.vue') },
       { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') },
       { path: 'adocao/:id', component: () => import('pages/AdoptionFormPage.vue') },
-      { path: '/minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue'), meta: { requiresAuth: true } },
-      { path: '/admin/solicitacoes', component: () => import('pages/AprovarSolicitacoesPage.vue'), meta: { requiresAdmin: true } },
-      { path: '/minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue') },
+      { path: 'minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue') },
+      { path: 'admin/solicitacoes', component: () => import('pages/AprovarSolicitacoesPage.vue') },
       { path: 'admin/racas', component: () => import('pages/AdminBreedsPage.vue') }
     ],
   },
