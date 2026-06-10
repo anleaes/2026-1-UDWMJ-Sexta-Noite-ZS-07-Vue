@@ -8,7 +8,8 @@ const routes = [
       { path: 'registro', component: () => import('pages/RegisterPage.vue') },
       { path: 'admin', component: () => import('pages/AdminPage.vue') },
       { path: 'animais', component: () => import('pages/AnimalsPage.vue') },
-      { path: 'admin/animais', component: () => import('pages/AdminAnimalsPage.vue') }
+      { path: 'admin/animais', component: () => import('pages/AdminAnimalsPage.vue') },
+      { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') }
     ],
   },
   {
