@@ -11,6 +11,7 @@ const routes = [
       { path: 'admin/animais', component: () => import('pages/AdminAnimalsPage.vue') },
       { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') },
       { path: 'admin/vacinas', component: () => import('pages/ManageVaccinesPage.vue') },
+      { path: 'admin/vacinacoes', component: () => import('pages/ManageVaccinationsPage.vue') },
       { path: 'perfil', component: () => import('pages/ProfilePage.vue') },
       { path: 'adocao/:id', component: () => import('pages/AdoptionFormPage.vue') },
       { path: 'minhas-solicitacoes', component: () => import('pages/MinhasSolicitacoesPage.vue') },
