@@ -10,7 +10,8 @@ const routes = [
       { path: 'animais', component: () => import('pages/AnimalsPage.vue') },
       { path: 'admin/animais', component: () => import('pages/AdminAnimalsPage.vue') },
       { path: 'perfil', component: () => import('pages/ProfilePage.vue') },
-      { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') }
+      { path: 'animal/:id', component: () => import('pages/InfoAnimalPage.vue') },
+      { path: 'admin/racas', component: () => import('pages/AdminBreedsPage.vue') }
     ],
   },
   {
