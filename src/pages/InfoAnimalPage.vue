@@ -9,9 +9,10 @@
       <div class="row q-col-gutter-lg items-stretch">
         
         <div class="col-12 col-md-6" style="max-height: 700px;">
-          <q-img 
+          <q-img
             :src="animal.imagem" class="full-height"
-            style="border-radius: 8px; min-height: 400px;  object-fit: cover;"
+            style="border-radius: 8px; min-height: 400px; object-fit: cover;"
+            :style="animal.adotado ? 'filter: grayscale(100%); opacity: 0.6;' : ''"
           />
         </div>
 
@@ -117,8 +118,25 @@
 
             </div>
 
-            <q-btn color="deep-orange-6" class="full-width q-py-sm text-weight-bold" label="Adotar" rounded unelevated no-caps size="lg" />
-          </q-card>
+            <q-btn
+              v-if="!animal.adotado"
+              color="deep-orange-6"
+              @click="irParaAdocao"
+              class="full-width q-py-sm text-weight-bold"
+              label="Adotar"
+              rounded unelevated no-caps size="lg"
+            />
+
+            <q-btn
+              v-else
+              disable
+              color="grey-4"
+              text-color="grey-6"
+              class="full-width q-py-sm text-weight-bold"
+              label="Já adotado"
+              rounded unelevated no-caps size="lg"
+              icon="lock"
+            />          </q-card>
         </div>
 
       </div>
@@ -128,10 +146,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter   } from 'vue-router'
 import { buscarAnimalPorId } from 'src/services/AnimalsService' // Importando a nova função mapeada
+import { isLoggedIn } from 'src/services/LoginService'
 
 const route = useRoute()
+const router = useRouter() 
 const animal = ref({})
 
 onMounted(async () => {
@@ -143,6 +163,13 @@ onMounted(async () => {
     }
   }
 })
+  function irParaAdocao() {
+    if (isLoggedIn.value) {
+      router.push(`/adocao/${animal.value.id}`)
+    } else {
+      router.push({ path: '/login', query: { next: `/adocao/${animal.value.id}` } })
+    }
+}
 
 </script>
 

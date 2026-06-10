@@ -20,6 +20,9 @@
               <q-item clickable v-close-popup @click="$router.push('/perfil')">
                 <q-item-section>Minha Conta</q-item-section>
               </q-item>
+              <q-item v-if="userRole === 'user'" clickable v-close-popup @click="$router.push('/minhas-solicitacoes')">  <!-- adiciona -->
+              <q-item-section>Minhas Solicitações</q-item-section>
+                </q-item> 
               <q-item v-if="userRole === 'admin' || userRole === 'moderador'" clickable v-close-popup @click="$router.push('/admin')">
                 <q-item-section>Gerenciar Site</q-item-section>
               </q-item>
@@ -51,6 +54,10 @@
                 <q-item>
                   <q-item-section avatar><q-icon name="account_circle" /></q-item-section>
                   <q-item-section class="text-weight-bold">Olá, {{ userName }}</q-item-section>
+                </q-item>
+                <q-item v-if="userRole === 'user'" clickable v-close-popup @click="$router.push('/minhas-solicitacoes')">  <!-- adiciona -->
+                <q-item-section avatar><q-icon name="assignment" color="primary" /></q-item-section>
+                    <q-item-section>Minhas Solicitações</q-item-section>
                 </q-item>
 
                 <q-item v-if="userRole === 'admin' || userRole === 'moderador'" clickable v-close-popup @click="$router.push('/admin')">
