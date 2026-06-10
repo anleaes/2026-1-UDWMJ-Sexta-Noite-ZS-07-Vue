@@ -19,7 +19,7 @@
           Em Destaque
         </div>
         <q-space />
-        <q-btn flat color="primary" label="Ver todos" icon-right="chevron_right" no-caps class="gt-xs" />
+        <q-btn flat @click="$router.push('/animais')" color="primary" label="Ver todos" icon-right="chevron_right" no-caps class="gt-xs" />
         <q-btn flat round color="primary" icon="chevron_right" class="lt-sm" />
       </div>
 
