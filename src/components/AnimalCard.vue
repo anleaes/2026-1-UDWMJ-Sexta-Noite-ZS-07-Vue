@@ -36,7 +36,8 @@
             color="primary" 
             label="Ver Mais"
             style="width: 70%; margin: 0;"
-            no-caps 
+            no-caps
+            :to="`/animal/${animal.id}`"
           />
         </q-card-actions>
       </div>
